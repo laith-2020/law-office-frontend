@@ -1,38 +1,46 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Landing from "./pages/Landing";
+import { Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import Services from "./components/Services";
+import PracticeAreas from "./components/PracticeAreas";
+import Footer from "./components/Footer";
+import Stats from "./components/Stats";
+import Articles from "./components/Articles";
+import Contact from "./components/Contact";
+import About from "./components/About";
 import Login from "./pages/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
-import Cases from "./pages/dashboard/Cases";
-import ProtectedRoute from "./routes/ProtectedRoute";
-import { AuthProvider } from "./context/AuthContext";
 
-function App() {
+function HomePage() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/cases"
-            element={
-              <ProtectedRoute>
-                <Cases />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+    <div className="min-h-screen bg-[#2C2C2C]">
+      <Navbar />
+      <Hero />
+      <Services />
+      <PracticeAreas />
+      <Stats />
+      <About />
+      <Articles />
+      <Contact />
+      <Footer />
+    </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
+  );
+}
