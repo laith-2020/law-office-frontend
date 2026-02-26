@@ -13,8 +13,8 @@ const services = [
 ];
 
 const OFFICE_ADDRESS = "الزرقاء - الازرق الجنوبي - الشارع العام";
-// const CONTACT_EMAIL = "mr.layth_2011@hotmail.com";
-const CONTACT_EMAIL = "maheraldairy32@gmail.com";
+ const CONTACT_EMAIL = "xxx.layth.xxx2@gmail.com";
+//const CONTACT_EMAIL = "maheraldairy32@gmail.com";
 const CONTACT_PHONE = "0795864644";
 const WORKING_HOURS = "السبت - الخميس 8AM - 8PM";
 
@@ -53,7 +53,7 @@ export default function Contact() {
     setSubmitStatus("idle");
 
     try {
-      await api.post("/contact", {
+      await api.post("https://aldaree-for-law.vercel.app/api/contact", {
         name: formData.name,
         phone: formData.phone,
         email: formData.email,
